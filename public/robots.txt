@@ -1,0 +1,20 @@
+# MineGuard Industrial SCADA Crawler Directives
+# Directorate General of Mines Safety (DGMS) Geotechnical Data Grid
+
+User-agent: *
+Allow: /
+Allow: /#/nodes
+Allow: /#/alerts
+Allow: /#/history
+Allow: /#/network
+Allow: /#/reports
+Allow: /#/settings
+Disallow: /api/
+Disallow: /admin/
+Disallow: /backend/
+
+# Host configuration
+Host: https://mineguard-monitoring.gov.in
+
+# Sitemap location
+Sitemap: https://mineguard-monitoring.gov.in/sitemap.xml

@@ -1,0 +1,19 @@
+{
+  "name": "MineGuard — Real-Time Mine Subsidence SCADA",
+  "short_name": "MineGuard",
+  "description": "AI-enabled Real-Time Mine Subsidence Monitoring & Early Warning System (SIH 2026 PS 26025)",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F7F7F5",
+  "theme_color": "#3F4A42",
+  "categories": ["utilities", "productivity", "industrial"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

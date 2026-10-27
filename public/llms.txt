@@ -1,0 +1,49 @@
+# MineGuard — Real-Time Mine Subsidence Monitoring System
+> Autonomous geotechnical monitoring, wireless ESP-NOW mesh telemetry, and machine-learning strata hazard forecasting for underground coal mines. Developed for Smart India Hackathon 2026 (Problem Statement 26025) under the Ministry of Coal, Government of India.
+
+## System Overview
+MineGuard is an industrial-grade geotechnical SCADA system designed to monitor continuous surface tilt, vertical subsidence displacement, strata vibration, and temperature across underground coal mining extraction panels (such as longwall and bord-and-pillar goaf areas).
+
+- **Primary Canonical Domain:** https://mineguard-monitoring.gov.in
+- **Deployment Location:** Moonidih Colliery, Panel P-4 Extraction Zone, Jharia Coalfield, Dhanbad, Jharkhand, India (Coordinates: 23.7431° N, 86.3533° E)
+- **Governing Body:** Ministry of Coal & Directorate General of Mines Safety (DGMS), India
+
+## Sensor Array & Wireless Mesh Topology
+The surface monitoring transect comprises 4 autonomous, solar-battery hybrid IoT sensor nodes communicating over a low-latency 2.4 GHz ESP-NOW wireless mesh protocol:
+- **Node N1 (NODE_01):** Reference Inclinometer (Zone A, Stable baseline boundary) — 1-hop relay via N2
+- **Node N2 (NODE_02):** Inflexion Transect Node (Zone B, Subsidence trough transition zone) — Direct link to Gateway N3
+- **Node N3 (NODE_03):** Active Monitoring Gateway Node (Zone C, Primary goaf caving center) — Root gateway bridging ESP-NOW to industrial telemetry backend
+- **Node N4 (NODE_04):** Perimeter Flank Node (Zone D, Edge abutment zone) — 2-hop relay via N2/N3
+
+## Geotechnical Safety Thresholds (DGMS Compliance)
+- **Surface Incline / Angular Tilt:**
+  - `Safe (Nominal):` < 1.00° (Uniform strata settlement)
+  - `Warning (Caution):` 1.00° to 2.00° (Differential settlement inflection, continuous monitoring advisory)
+  - `Critical (Alarm):` > 2.00° (Severe tensile strain / impending surface crown failure, immediate evacuation protocol)
+- **Vertical Displacement:**
+  - `Safe:` < 0.50 mm
+  - `Warning:` 0.50 mm to 1.50 mm
+  - `Critical:` > 1.50 mm
+- **Strata Vibration Index:**
+  - `Safe:` < 0.03 g
+  - `Warning:` 0.03 g to 0.08 g
+  - `Critical:` > 0.08 g
+
+## REST API & WebSocket Telemetry Interface
+- `GET /api/sensors`: Fetches real-time telemetry array for all deployed nodes (tilt, displacement, vibration, battery, RSSI, anomaly score).
+- `GET /api/sensors/:id`: Fetches detailed telemetry and 16-feature statistical snapshot for an individual sensor node.
+- `GET /api/alerts`: Returns active alarm register and historical geotechnical alerts.
+- `POST /api/alerts/acknowledge`: Acknowledges and silences active sirens with operator signature.
+- `GET /api/history/telemetry`: Queries persistent PostgreSQL/TimescaleDB 1-second raw telemetry or 1-minute aggregations over 1h, 6h, 24h, and 7d windows.
+- `GET /api/history/risk`: Queries persistent machine-learning anomaly and subsidence risk time-series.
+- `WebSocket (Socket.IO)`: Emits live `telemetry` events at 1-second intervals and real-time `alert` broadcasts upon threshold breach.
+
+## Application Architecture & Views
+1. **Live Monitor (`/`):** Real-time SCADA schematic, spatial contour map, live inclinometer time-series, and engineering data table.
+2. **Sensor Nodes (`/#/nodes`):** Deep dive into individual sensor hardware health, battery voltage, signal strength (RSSI in dBm), and multi-axis inclinometer vectors.
+3. **Alert Center (`/#/alerts`):** Geotechnical alarm log with severity ranking, anomaly indicators, and operator acknowledgment workflows.
+4. **Historical Analytics (`/#/history`):** Multi-day time-series graphs, statistical distributions, and 1-minute aggregated rollups.
+5. **Mesh Network (`/#/network`):** ESP-NOW RF link diagnostics, hop counts, routing table, and packet delivery reliability.
+6. **AI Risk Assessment (`/#/reports`):** 16-feature statistical anomaly engine, confidence intervals, and automated hazard advisories.
+7. **System Settings (`/#/settings`):** Calibration limits, custom domain configuration, and server connection parameters.
+8. **Geotechnical 404 (`/#/404`):** Custom recovery page for invalid transect identifiers or unmapped routes.

@@ -1,0 +1,52 @@
+{
+  "dataset_name": "MineGuard Synthetic Surface Telemetry",
+  "problem_statement": "SIH 2026 - PS 26025",
+  "is_synthetic": true,
+  "disclaimer": "SYNTHETIC DEMONSTRATION DATA ONLY. Not real mine measurements.",
+  "sampling_frequency_hz": 1.0,
+  "sampling_interval_seconds": 1.0,
+  "total_samples": 86400,
+  "duration_seconds": 86400,
+  "start_time": "2026-08-26T00:00:00Z",
+  "end_time": "2026-08-26T23:59:59Z",
+  "schema": [
+    "timestamp",
+    "tilt_x",
+    "tilt_y",
+    "tilt_angle",
+    "temperature",
+    "displacement",
+    "vibration"
+  ],
+  "sensor_hardware": "MPU6050 IMU + Displacement + Dynamic Vibration Transducer",
+  "anomaly_events": [
+    {
+      "event_id": "ANOM-01-INFLEXION",
+      "type": "Gradual Strata Inflexion",
+      "start_time_sec": 18000,
+      "end_time_sec": 28800,
+      "description": "Slow progressive shear deformation with rising tilt and gradual displacement."
+    },
+    {
+      "event_id": "ANOM-02-SUBSIDENCE",
+      "type": "Rapid Subsidence & Caving Anomaly",
+      "start_time_sec": 28800,
+      "end_time_sec": 36000,
+      "description": "Severe non-linear tilt acceleration (>2.0 deg), step displacement, and high vibration spikes."
+    },
+    {
+      "event_id": "ANOM-03-SETTLEMENT",
+      "type": "Post-Caving Settlement & Relaxation",
+      "start_time_sec": 36000,
+      "end_time_sec": 46800,
+      "description": "Strata stabilization into new equilibrium with residual plastic strain."
+    },
+    {
+      "event_id": "ANOM-04-MICROTREMOR",
+      "type": "Secondary Dynamic Tremor",
+      "start_time_sec": 57600,
+      "end_time_sec": 61200,
+      "description": "Transient high-frequency vibration burst with rapid tilt step and subsequent damping."
+    }
+  ]
+}

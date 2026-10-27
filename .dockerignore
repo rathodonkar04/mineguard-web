@@ -1,0 +1,16 @@
+node_modules
+*/node_modules
+dist
+.git
+.github
+.agents
+.planning
+*.log
+.env.local
+.DS_Store
+Thumbs.db
+
+.env
+**/.env
+**/.env.*
+backend/storage

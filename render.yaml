@@ -1,0 +1,16 @@
+# Attach a persistent disk and set CAMERA_STORAGE_DIR to its mount path
+# before relying on image persistence across restarts/deploys.
+services:
+  - type: web
+    name: mineguard
+    runtime: node
+    buildCommand: npm ci && npm ci --prefix backend && npm run build
+    startCommand: npm run start:production
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_ENABLED
+        value: "false"
+      - key: JWT_SECRET
+        generateValue: true

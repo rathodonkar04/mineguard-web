@@ -1,0 +1,94 @@
+{
+  "calibration_metadata": {
+    "created_at": "2026-08-26T21:03:17.875003Z",
+    "source_csv": "ai/data/telemetry.csv",
+    "sample_count": 14400,
+    "sampling_frequency_hz": 1.0,
+    "duration_seconds": 14400,
+    "start_time": "2026-08-26T00:00:00Z",
+    "end_time": "2026-08-26T03:59:59Z",
+    "epsilon_regularizer": 1e-06,
+    "disclaimer": "SYNTHETIC DEMONSTRATION BASELINE. Not real mine measurements."
+  },
+  "statistics": {
+    "tilt_x": {
+      "count": 14400,
+      "mean": 0.109019,
+      "std": 0.007162,
+      "safe_std": 0.007162,
+      "median": 0.109,
+      "mad_raw": 0.005,
+      "mad_normalized": 0.007413,
+      "safe_mad": 0.007413,
+      "min": 0.083,
+      "max": 0.136
+    },
+    "tilt_y": {
+      "count": 14400,
+      "mean": 0.072622,
+      "std": 0.007059,
+      "safe_std": 0.007059,
+      "median": 0.073,
+      "mad_raw": 0.005,
+      "mad_normalized": 0.007413,
+      "safe_mad": 0.007413,
+      "min": 0.044,
+      "max": 0.1
+    },
+    "tilt_angle": {
+      "count": 14400,
+      "mean": 0.131049,
+      "std": 0.009289,
+      "safe_std": 0.009289,
+      "median": 0.131,
+      "mad_raw": 0.006,
+      "mad_normalized": 0.008896,
+      "safe_mad": 0.008896,
+      "min": 0.099,
+      "max": 0.167
+    },
+    "temperature": {
+      "count": 14400,
+      "mean": 24.279835,
+      "std": 0.689402,
+      "safe_std": 0.689402,
+      "median": 24.11,
+      "mad_raw": 0.5,
+      "mad_normalized": 0.7413,
+      "safe_mad": 0.7413,
+      "min": 23.08,
+      "max": 26.06
+    },
+    "displacement": {
+      "count": 14400,
+      "mean": 0.219924,
+      "std": 0.004351,
+      "safe_std": 0.004351,
+      "median": 0.22,
+      "mad_raw": 0.003,
+      "mad_normalized": 0.004448,
+      "safe_mad": 0.004448,
+      "min": 0.203,
+      "max": 0.237
+    },
+    "vibration": {
+      "count": 14400,
+      "mean": 0.016531,
+      "std": 0.001885,
+      "safe_std": 0.001885,
+      "median": 0.0165,
+      "mad_raw": 0.0013,
+      "mad_normalized": 0.001927,
+      "safe_mad": 0.001927,
+      "min": 0.0097,
+      "max": 0.0236
+    }
+  },
+  "thermal_coupling": {
+    "alpha_thermal": 0.003659,
+    "intercept": 0.042209,
+    "r_squared": 0.0737,
+    "is_statistically_meaningful": true,
+    "description": "Slope: 0.003659 deg/C (R^2: 0.0737)"
+  }
+}

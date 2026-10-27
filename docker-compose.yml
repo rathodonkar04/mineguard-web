@@ -1,0 +1,72 @@
+version: '3.8'
+
+# ==============================================================================
+# MineGuard Colliery Multi-Container Compose Configuration
+# Smart India Hackathon 2026 (Problem Statement 26025)
+# Deployable in remote pithead server rooms with zero external internet dependencies
+# ==============================================================================
+
+services:
+  mineguard-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mineguard-scada-server
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DB_ENABLED=true
+      - DB_HOST=mineguard-db
+      - DB_PORT=5432
+      - DB_NAME=mineguard
+      - DB_USER=mineguard_operator
+      - DB_PASSWORD=MineGuardSecure2026!
+      - DB_SSL=false
+      - JWT_SECRET=MineGuard_Colliery_Airgapped_Production_Secret_2026
+      - SENSOR_TIMEOUT_MS=30000
+      - CAMERA_STORAGE_DIR=/app/camera-data
+    volumes:
+      - mineguard-camera-data:/app/camera-data
+    depends_on:
+      mineguard-db:
+        condition: service_healthy
+    networks:
+      - mineguard-network
+
+  mineguard-db:
+    image: postgres:16-alpine
+    container_name: mineguard-timescale-db
+    restart: always
+    environment:
+      - POSTGRES_DB=mineguard
+      - POSTGRES_USER=mineguard_operator
+      - POSTGRES_PASSWORD=MineGuardSecure2026!
+    ports:
+      - "5432:5432"
+    volumes:
+      - mineguard-postgres-data:/var/lib/postgresql/data
+      - ./backend/db/risk_schema.sql:/docker-entrypoint-initdb.d/01_risk_schema.sql
+      - ./backend/db/retention_schema.sql:/docker-entrypoint-initdb.d/02_retention_schema.sql
+      - ./backend/db/auth_schema.sql:/docker-entrypoint-initdb.d/03_auth_schema.sql
+      - ./backend/db/multi_mine_schema.sql:/docker-entrypoint-initdb.d/04_multi_mine_schema.sql
+      - ./backend/db/motion_schema.sql:/docker-entrypoint-initdb.d/05_motion_schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mineguard_operator -d mineguard"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - mineguard-network
+
+volumes:
+  mineguard-camera-data:
+  mineguard-postgres-data:
+    name: mineguard_colliery_data_volume
+
+networks:
+  mineguard-network:
+    name: mineguard_airgapped_lan
+    driver: bridge

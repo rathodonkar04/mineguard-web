@@ -1,0 +1,213 @@
+{
+  "model_type": "sklearn.ensemble.IsolationForest",
+  "sklearn_version": "1.7.1",
+  "hyperparameters": {
+    "n_estimators": 300,
+    "contamination": "auto",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "training_metadata": {
+    "training_period_seconds": "0s to 14,400s (first 4 hours)",
+    "training_samples_count": 14371,
+    "warmup_samples_dropped": 29,
+    "baseline_source": "ai/models/baseline.json",
+    "telemetry_source": "ai/data/telemetry.csv",
+    "created_at": "2026-08-26T21:14:30.334765Z"
+  },
+  "feature_engineering": {
+    "version": "1.0.0",
+    "feature_count": 16,
+    "features_list": [
+      "z_tilt",
+      "z_displacement",
+      "z_vibration",
+      "z_temperature",
+      "tilt_rate",
+      "displacement_rate",
+      "displacement_acceleration",
+      "vibration_rate",
+      "tilt_mean_30s",
+      "tilt_std_30s",
+      "displacement_mean_30s",
+      "vibration_mean_30s",
+      "vibration_std_30s",
+      "volatility_ratio",
+      "delta_temperature",
+      "detrended_tilt"
+    ]
+  },
+  "score_normalization": {
+    "method": "Continuous hyperbolic tangent mapping anchored at decision_function=0.0",
+    "formula": "ai_anomaly_score = 50.0 * (1.0 - tanh(decision_function / scale_factor))",
+    "scale_factor": 0.051307,
+    "anomaly_decision_threshold": 50.0,
+    "scale_range": "[0.0, 100.0] (0 = Strongly Normal, 100 = Strongly Anomalous)",
+    "disclaimer": "Diagnostic presentation score. NOT a probability of mine failure."
+  },
+  "evaluation_metrics": {
+    "normal_baseline_fpr_pct": 9.93,
+    "normal_holdout_fpr_pct": 61.78,
+    "anom_01_inflexion_recall_pct": 99.21,
+    "anom_02_subsidence_recall_pct": 100.0,
+    "anom_03_settlement_recall_pct": 100.0,
+    "anom_04_microtremor_recall_pct": 100.0,
+    "test_precision": 0.4581,
+    "test_recall": 0.9974,
+    "test_f1_score": 0.6278,
+    "confusion_matrix": {
+      "TP": 32315,
+      "FP": 38224,
+      "TN": 1376,
+      "FN": 85
+    }
+  },
+  "phase_breakdown": [
+    {
+      "phase": "NORMAL_BASELINE",
+      "description": "Undisturbed Ground (Training Period)",
+      "is_anomaly": false,
+      "samples": 14371,
+      "mean_score": 19.66,
+      "max_score": 99.57,
+      "pct_flagged": 9.93,
+      "flagged_count": 1427
+    },
+    {
+      "phase": "NORMAL_HOLDOUT",
+      "description": "Undisturbed Ground (Unseen Holdout)",
+      "is_anomaly": false,
+      "samples": 3600,
+      "mean_score": 58.11,
+      "max_score": 98.91,
+      "pct_flagged": 61.78,
+      "flagged_count": 2224
+    },
+    {
+      "phase": "ANOM-01-INFLEXION",
+      "description": "Gradual Strata Inflexion & Shear Creep",
+      "is_anomaly": true,
+      "samples": 10800,
+      "mean_score": 97.56,
+      "max_score": 99.96,
+      "pct_flagged": 99.21,
+      "flagged_count": 10715
+    },
+    {
+      "phase": "ANOM-02-SUBSIDENCE",
+      "description": "Rapid Subsidence & Non-linear Caving",
+      "is_anomaly": true,
+      "samples": 7200,
+      "mean_score": 99.97,
+      "max_score": 99.99,
+      "pct_flagged": 100.0,
+      "flagged_count": 7200
+    },
+    {
+      "phase": "ANOM-03-SETTLEMENT",
+      "description": "Post-Caving Settlement & Relaxation",
+      "is_anomaly": true,
+      "samples": 10800,
+      "mean_score": 99.65,
+      "max_score": 99.98,
+      "pct_flagged": 100.0,
+      "flagged_count": 10800
+    },
+    {
+      "phase": "STABILIZED_01",
+      "description": "Stabilized Plateau Monitoring (Post-Caving)",
+      "is_anomaly": false,
+      "samples": 10800,
+      "mean_score": 99.65,
+      "max_score": 99.99,
+      "pct_flagged": 100.0,
+      "flagged_count": 10800
+    },
+    {
+      "phase": "ANOM-04-MICROTREMOR",
+      "description": "Secondary Dynamic Micro-Tremor",
+      "is_anomaly": true,
+      "samples": 3600,
+      "mean_score": 99.69,
+      "max_score": 99.99,
+      "pct_flagged": 100.0,
+      "flagged_count": 3600
+    },
+    {
+      "phase": "STABILIZED_02",
+      "description": "Final Equilibrium Monitoring",
+      "is_anomaly": false,
+      "samples": 25200,
+      "mean_score": 99.07,
+      "max_score": 99.99,
+      "pct_flagged": 100.0,
+      "flagged_count": 25200
+    }
+  ],
+  "feature_importance_ablation": [
+    {
+      "feature": "z_temperature",
+      "importance_delta": 0.0
+    },
+    {
+      "feature": "delta_temperature",
+      "importance_delta": 0.0
+    },
+    {
+      "feature": "displacement_acceleration",
+      "importance_delta": -0.0223
+    },
+    {
+      "feature": "tilt_mean_30s",
+      "importance_delta": -0.0255
+    },
+    {
+      "feature": "displacement_rate",
+      "importance_delta": -0.0328
+    },
+    {
+      "feature": "tilt_rate",
+      "importance_delta": -0.0431
+    },
+    {
+      "feature": "tilt_std_30s",
+      "importance_delta": -0.0778
+    },
+    {
+      "feature": "vibration_rate",
+      "importance_delta": -0.0919
+    },
+    {
+      "feature": "displacement_mean_30s",
+      "importance_delta": -0.1356
+    },
+    {
+      "feature": "volatility_ratio",
+      "importance_delta": -0.1404
+    },
+    {
+      "feature": "vibration_std_30s",
+      "importance_delta": -0.1515
+    },
+    {
+      "feature": "detrended_tilt",
+      "importance_delta": -0.2715
+    },
+    {
+      "feature": "z_tilt",
+      "importance_delta": -0.2964
+    },
+    {
+      "feature": "z_displacement",
+      "importance_delta": -0.2968
+    },
+    {
+      "feature": "z_vibration",
+      "importance_delta": -0.329
+    },
+    {
+      "feature": "vibration_mean_30s",
+      "importance_delta": -0.3439
+    }
+  ]
+}

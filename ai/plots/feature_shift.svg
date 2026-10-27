@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" width="1100" height="700" style="background:#090d16; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, monospace;">
+<text x="220" y="32" fill="#f8fafc" font-size="17" font-weight="bold">MineGuard AI — Standardized Feature Distribution Shifts (vs. Baseline)</text>
+<text x="220" y="52" fill="#94a3b8" font-size="11.5">Shift in Standard Deviations: (μ_phase - μ_baseline) / σ_baseline | Amber: Normal Holdout | Purple: Stabilized_01</text>
+<line x1="630.0" y1="65" x2="630.0" y2="870" stroke="#64748b" stroke-width="1.5"/>
+<text x="630.0" y="58" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="middle">Baseline 0.0 σ</text>
+<rect x="630.0" y="70" width="0.2" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="86" width="58.7" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="86" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">z_tilt</text>
+<text x="1048" y="86" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.7σ S:+250.7σ</text>
+<rect x="630.0" y="120" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="136" width="115.8" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="136" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">z_displacement</text>
+<text x="1048" y="136" fill="#94a3b8" font-size="9.5" font-family="monospace">H: -0.1σ S:+494.2σ</text>
+<rect x="630.0" y="170" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="186" width="2.2" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="186" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">z_vibration</text>
+<text x="1048" y="186" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.0σ S: +9.6σ</text>
+<rect x="630.0" y="220" width="0.7" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="236" width="2.4" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="236" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">z_temperature</text>
+<text x="1048" y="236" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +2.9σ S:+10.4σ</text>
+<rect x="630.0" y="270" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="286" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="286" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">tilt_rate</text>
+<text x="1048" y="286" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.0σ S: -0.0σ</text>
+<rect x="630.0" y="320" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="336" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="336" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">displacement_rate</text>
+<text x="1048" y="336" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.0σ S: -0.0σ</text>
+<rect x="630.0" y="370" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="386" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="386" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">displacement_acceleration</text>
+<text x="1048" y="386" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.0σ S: +0.0σ</text>
+<rect x="630.0" y="420" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="436" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="436" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">vibration_rate</text>
+<text x="1048" y="436" fill="#94a3b8" font-size="9.5" font-family="monospace">H: -0.0σ S: -0.0σ</text>
+<rect x="630.0" y="470" width="0.5" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="486" width="157.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="486" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">tilt_mean_30s</text>
+<text x="1048" y="486" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +2.0σ S:+670.0σ</text>
+<rect x="630.0" y="520" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="536" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="536" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">tilt_std_30s</text>
+<text x="1048" y="536" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.1σ S: +0.1σ</text>
+<rect x="630.0" y="570" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="586" width="372.7" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="586" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">displacement_mean_30s</text>
+<text x="1048" y="586" fill="#94a3b8" font-size="9.5" font-family="monospace">H: -0.2σ S:+1590.6σ</text>
+<rect x="630.0" y="620" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="636" width="6.2" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="636" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">vibration_mean_30s</text>
+<text x="1048" y="636" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.1σ S:+26.7σ</text>
+<rect x="630.0" y="670" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="686" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="686" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">vibration_std_30s</text>
+<text x="1048" y="686" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.0σ S: -0.0σ</text>
+<rect x="630.0" y="720" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="736" width="0.0" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="736" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">volatility_ratio</text>
+<text x="1048" y="736" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +0.0σ S: -0.0σ</text>
+<rect x="630.0" y="770" width="0.7" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="786" width="2.4" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="786" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">delta_temperature</text>
+<text x="1048" y="786" fill="#94a3b8" font-size="9.5" font-family="monospace">H: +2.9σ S:+10.4σ</text>
+<rect x="630.0" y="820" width="0.0" height="14" fill="#f59e0b" rx="2"/>
+<rect x="630.0" y="836" width="60.3" height="14" fill="#a855f7" rx="2"/>
+<text x="208" y="836" fill="#cbd5e1" font-size="10" font-weight="bold" text-anchor="end">detrended_tilt</text>
+<text x="1048" y="836" fill="#94a3b8" font-size="9.5" font-family="monospace">H: -0.1σ S:+257.5σ</text>
+<rect x="820" y="20" width="14" height="10" fill="#f59e0b" rx="2"/>
+<text x="840" y="29" fill="#f59e0b" font-size="10.5" font-weight="bold">NORMAL_HOLDOUT</text>
+<rect x="950" y="20" width="14" height="10" fill="#a855f7" rx="2"/>
+<text x="970" y="29" fill="#a855f7" font-size="10.5" font-weight="bold">STABILIZED_01</text>
+</svg>
