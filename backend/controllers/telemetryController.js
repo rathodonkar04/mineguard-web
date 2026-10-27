@@ -26,7 +26,9 @@ function getHealth(req, res) {
   return res.status(200).json({
     status: 'ok',
     service: 'MineGuard Backend',
-    version: '1.4.0',
+    version: '1.5.0-live-only',
+    mode: 'live-only',
+    demoEnabled: false,
     telemetrySchema: 'Canonical ESP32 Multi-Channel (node_id, timestamp, tilt_x, tilt_y, tilt_angle, temperature, vibration, displacement)',
     database: dbService.getHealth(),
     timestamp: new Date().toISOString()
@@ -156,8 +158,8 @@ async function getAlerts(req, res) {
 
   return res.status(200).json({
     success: true,
-    count: alerts.length,
-    alerts
+    count: alerts.filter(a => a.id !== 'ALT-INIT-001').length,
+    alerts: alerts.filter(a => a.id !== 'ALT-INIT-001')
   });
 }
 

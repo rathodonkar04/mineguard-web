@@ -12,7 +12,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "start:production": "node backend/server.js",
-    "test:hardware": "node backend/test-hardware-camera.js"
+    "test:hardware": "node backend/test-hardware-camera.js",
+    "test:live": "node backend/test-live-only.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",

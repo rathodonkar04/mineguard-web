@@ -66,7 +66,7 @@ router.post('/history/aggregate', postRunAggregation);
 router.post('/history/prune', postRunPruning);
 
 // 7. Demonstration Simulation Controls
-router.post('/demo/simulate', postSimulateDemo);
-router.post('/demo/reset', postResetDemo);
+router.post('/demo/simulate', (req, res) => res.status(410).json({ success: false, error: 'Simulation is disabled. Send hardware readings to /api/readings.' }));
+router.post('/demo/reset', (req, res) => res.status(410).json({ success: false, error: 'Demo reset is disabled in live-only mode.' }));
 
 module.exports = router;

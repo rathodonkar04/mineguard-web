@@ -8,8 +8,8 @@
  * - Background cache update & stale-while-revalidate for dashboard bundle
  */
 
-const STATIC_CACHE_NAME = 'mineguard-static-v1.6';
-const API_CACHE_NAME = 'mineguard-api-v1.6';
+const STATIC_CACHE_NAME = 'mineguard-static-v1.7';
+const API_CACHE_NAME = 'mineguard-api-v1.7';
 
 const STATIC_ASSETS = [
   '/',
@@ -51,7 +51,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   // Camera and health requests must never be served as stale cached data.
-  if (url.pathname.startsWith('/api/camera') || url.pathname.includes('/health') || url.pathname.startsWith('/socket.io')) return;
+  if (url.pathname.startsWith('/api/') || url.pathname.includes('/health') || url.pathname.startsWith('/socket.io')) return;
 
   // Handle API GET Requests (Network First, Cache Fallback)
   if (url.pathname.startsWith('/api/')) {

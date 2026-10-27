@@ -106,3 +106,6 @@ Socket.IO events, optional token and concurrent retention.
 These use synthetic readings locally, not your live deployment or physical hardware.
 
 Production routes were HTTP smoke-tested. Browser visual testing was not completed because a browser executable was unavailable.
+
+## Live-only update
+Read LIVE_ONLY_UPDATE.md first for the latest startup behavior and deployment steps. No readings are prepopulated.

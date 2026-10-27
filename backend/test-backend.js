@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Automated Verification Suite for MineGuard Backend
  * Tests all REST endpoints, validation rules, risk calculations, and Socket.IO events.
  */
@@ -72,20 +72,20 @@ async function runTests() {
     // 2. GET /api/sensors
     const sensorsRes = await makeRequest('GET', '/api/sensors');
     assert(sensorsRes.status === 200 && Array.isArray(sensorsRes.data.sensors), 'GET /api/sensors returns 200 OK');
-    assert(sensorsRes.data.sensors.length === 3, 'GET /api/sensors returns exactly 3 nodes');
+    assert(sensorsRes.data.sensors.length === 0, 'No seeded readings at startup');
     
     const nodeIds = sensorsRes.data.sensors.map(s => s.nodeId);
-    assert(nodeIds.includes('N1') && nodeIds.includes('N2') && nodeIds.includes('N3'), 'Nodes are strictly N1, N2, and N3');
+    assert(nodeIds.length === 0, 'Nodes appear only after telemetry');
 
     // 3. GET /api/sensors/:nodeId
     const n1Res = await makeRequest('GET', '/api/sensors/N1');
-    assert(n1Res.status === 200 && n1Res.data.sensor.nodeId === 'N1', 'GET /api/sensors/N1 returns Node N1');
+    assert(n1Res.status === 404, 'N1 has no reading before upload');
 
     const n2Res = await makeRequest('GET', '/api/sensors/N2');
-    assert(n2Res.status === 200 && n2Res.data.sensor.nodeId === 'N2', 'GET /api/sensors/N2 returns Node N2');
+    assert(n2Res.status === 404, 'N2 has no reading before upload');
 
     const n3Res = await makeRequest('GET', '/api/sensors/N3');
-    assert(n3Res.status === 200 && n3Res.data.sensor.nodeId === 'N3', 'GET /api/sensors/N3 returns Node N3');
+    assert(n3Res.status === 404, 'N3 has no reading before upload');
 
     const invalidNodeRes = await makeRequest('GET', '/api/sensors/N12');
     assert(invalidNodeRes.status === 404, 'GET /api/sensors/N12 returns 404 Not Found');
@@ -182,11 +182,11 @@ async function runTests() {
 
     // 8. POST /api/demo/simulate (Single Step)
     const simStepRes = await makeRequest('POST', '/api/demo/simulate', { step: 4 });
-    assert(simStepRes.status === 200 && simStepRes.data.currentStep.tilt === 1.0, 'POST /api/demo/simulate step=4 sets N3 tilt to 1.0° (Warning)');
+    assert(simStepRes.status === 410, 'Simulation uploads disabled');
 
     // 9. POST /api/demo/reset
     const resetRes = await makeRequest('POST', '/api/demo/reset');
-    assert(resetRes.status === 200 && resetRes.data.sensors[0].nodeId === 'N1', 'POST /api/demo/reset resets all nodes');
+    assert(resetRes.status === 410, 'Demo reset disabled');
 
     socket.disconnect();
 

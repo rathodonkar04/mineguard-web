@@ -190,6 +190,14 @@ function validateTelemetryPayload(body) {
   }
   const normalized = {
     ...motion,
+    reported_fields: {
+      tilt_x: rawTiltX !== undefined,
+      tilt_y: rawTiltY !== undefined,
+      temperature: rawTemp !== undefined,
+      displacement: rawDisplacement !== undefined,
+      vibration: rawVibration !== undefined,
+      crackDetected: typeof body.crackDetected === 'boolean'
+    },
     nodeId: nodeMeta.shortId,
     node_id: nodeMeta.canonicalId,
     mine_id: String(rawMineId).trim().toUpperCase(),

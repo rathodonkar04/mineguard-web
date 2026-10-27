@@ -171,6 +171,12 @@ function updateTelemetry(payload, io = null) {
     timestamp: nowIso
   };
 
+  // Internal model defaults must not masquerade as device measurements.
+  for (const [field, present] of Object.entries(payload.reported_fields || {})) {
+    if (!present) sensors[targetIndex][field] = null;
+  }
+  sensors[targetIndex].source = 'telemetry';
+  sensors[targetIndex].receivedAt = new Date().toISOString();
   const updatedSensor = { ...sensors[targetIndex] };
 
   // 4. Evaluate alert creation
